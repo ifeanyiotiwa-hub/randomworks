@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.Collections;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
@@ -58,8 +59,14 @@ public class AssertTest {
         assertThat(Arrays.asList("fun", "ban", "net"), everyItem(containsString("n")));
     }
 
+    @Test
     public void testAssertHasItems() {
         assertThat(Arrays.asList("one", "two", "three"), hasItems("one", "three"));
     }
 
+
+    @Test(timeout = 1600, expected = AssertionError.class)
+    public void testEmptyListSize() {
+        assertEquals(1, 0);
+    }
 }
